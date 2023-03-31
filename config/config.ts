@@ -1,6 +1,5 @@
 // https://umijs.org/config/
 import {defineConfig} from '@umijs/max';
-import {join} from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
@@ -38,6 +37,8 @@ export default defineConfig({
     // 如果不想要 configProvide 动态设置主题需要把这个设置为 default
     // 只有设置为 variable， 才能使用 configProvide 动态设置主色调
     'root-entry-name': 'variable',
+    // 添加圆角
+    '@border-radius-base': '4px'
   },
   /**
    * @name moment 的国际化配置
@@ -75,7 +76,7 @@ export default defineConfig({
    * @doc https://umijs.org/docs/max/layout-menu
    */
   layout: {
-    locale: true,
+    locale: false,
     ...defaultSettings,
   },
   /**

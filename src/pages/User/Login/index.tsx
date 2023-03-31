@@ -193,6 +193,7 @@ const Login: React.FC = () => {
                   const result = await getFakeCaptcha({
                     phone,
                   });
+                  // @ts-ignore
                   if (result === false) {
                     return;
                   }
