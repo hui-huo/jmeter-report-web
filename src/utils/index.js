@@ -1,5 +1,3 @@
-// 获取指点范围的时间戳
-
 import moment from "moment";
 
 export function timeStampRange(offset, unit) {

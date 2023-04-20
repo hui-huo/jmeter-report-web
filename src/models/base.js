@@ -6,7 +6,9 @@ export default function base() {
   const [baseInfo, setBaseInfo] = useState({})
 
   useEffect(() => {
-    queryBaseInfo().then(res => setBaseInfo({...baseInfo, ...res.data}))
+    queryBaseInfo().then(res => setBaseInfo({...baseInfo, ...res.data})).catch((error) => {
+      console.log(error)
+    })
   }, [])
 
   return {

@@ -21,6 +21,9 @@ function TrendChart({filter}) {
         })
         setData(newData)
       })
+      .catch((error) => {
+        console.log(error)
+      })
   }, [range, filter]);
 
   const onChange = ({target: {value}}) => {

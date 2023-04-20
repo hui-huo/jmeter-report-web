@@ -121,7 +121,9 @@ const SummaryTable = () => {
       columns={columnAddValueEnum(columns, baseInfo)}
       request={async (params = {}, sort, filter) => {
         const queryFilter = {...params, ...sort, ...filter}
-        const res = await querySummaryList(queryFilter)
+        const res = await querySummaryList(queryFilter).catch((error) => {
+          console.log(error)
+        })
         const {data} = res
         return {data}
       }}

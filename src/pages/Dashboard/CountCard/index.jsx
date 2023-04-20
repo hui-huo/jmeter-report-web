@@ -6,6 +6,7 @@ import LaunchSVG from '/public/launch.svg'
 import CaseSVG from '/public/case.svg'
 import {latestBuildInfo} from "@/services/jmeter-report/api";
 import {Link} from "@@/exports";
+import {notification} from 'antd';
 
 const {Divider} = StatisticCard;
 
@@ -15,6 +16,8 @@ function CountCard({filter}) {
   useEffect(() => {
     latestBuildInfo(filter).then((res) => {
       setData({...res.data})
+    }).catch((error) => {
+      console.log(error)
     })
   }, [filter])
 

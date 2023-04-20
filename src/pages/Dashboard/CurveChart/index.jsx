@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Line} from '@ant-design/plots';
-import {Card} from "antd";
+import {Card, notification} from "antd";
 import {queryChartData} from "@/services/jmeter-report/api";
 import FilterCard from "@/pages/Dashboard/FilterCard";
 import {timeStampRange} from "@/utils";
@@ -21,6 +21,9 @@ const CurveChart = ({filter}) => {
           return value
         })
         setData(newData)
+      })
+      .catch((error) => {
+        console.log(error)
       })
   }, [range, filter]);
 

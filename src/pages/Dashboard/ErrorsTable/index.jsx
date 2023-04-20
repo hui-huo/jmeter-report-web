@@ -91,6 +91,8 @@ const ErrorsTable = ({filter}) => {
   useEffect(() => {
     querySummaryList({result: '0', ...filter}).then(res => {
       setData(res.data)
+    }).catch((error) => {
+      console.log(error)
     })
   }, [filter])
 
