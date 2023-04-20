@@ -1,5 +1,7 @@
-import { Settings as LayoutSettings } from '@ant-design/pro-components';
+import {Settings as LayoutSettings} from '@ant-design/pro-components';
 
+
+// @ts-ignore
 /**
  * @name
  */
@@ -10,15 +12,17 @@ const Settings: LayoutSettings & {
   navTheme: 'light',
   // 拂晓蓝
   colorPrimary: '#1890ff',
-  layout: 'mix',
+  layout: 'side',
   contentWidth: 'Fluid',
   fixedHeader: false,
   fixSiderbar: true,
   colorWeak: false,
-  title: 'Ant Design Pro',
   pwa: false,
-  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  logo: '/logo.png',
   iconfontUrl: '',
+  // @ts-ignore
+  breakpoint: false,
+  defaultCollapsed: true,
 };
 
 export default Settings;
