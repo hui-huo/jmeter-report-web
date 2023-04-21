@@ -41,13 +41,13 @@ function SettingModal({setFilter, setText, visible, setVisible}) {
         width="sm"
         label="项目名称"
         name="project"
-        valueEnum={convertValueEnum(baseInfo.project)}
+        valueEnum={convertValueEnum(baseInfo?.project)}
       />
       <ProFormSelect
         width="sm"
         label="执行环境"
         name="env"
-        valueEnum={convertValueEnum(baseInfo.env)}
+        valueEnum={convertValueEnum(baseInfo?.env)}
       />
 
     </ModalForm>

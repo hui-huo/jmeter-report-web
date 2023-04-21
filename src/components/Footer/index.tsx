@@ -13,9 +13,9 @@ const Footer: React.FC = () => {
       copyright={false}
       links={[
         {
-          key: 'JMeterReport',
-          title: 'JMeter Report',
-          href: 'https://github.com/hui-huo',
+          key: 'JMeter',
+          title: 'JMeter',
+          href: 'https://jmeter.apache.org',
           blankTarget: true,
         },
         {
@@ -26,8 +26,8 @@ const Footer: React.FC = () => {
         },
         {
           key: 'hui-huo',
-          title: 'hui-huo',
-          href: 'https://ant.design',
+          title: 'Hui-huo',
+          href: 'https://github.com/hui-huo',
           blankTarget: true,
         },
       ]}

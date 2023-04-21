@@ -1,6 +1,5 @@
 import {Settings as LayoutSettings} from '@ant-design/pro-components';
 
-
 // @ts-ignore
 /**
  * @name
@@ -18,7 +17,7 @@ const Settings: LayoutSettings & {
   fixSiderbar: true,
   colorWeak: false,
   pwa: false,
-  logo: '/logo.png',
+  // logo: LOGO,
   iconfontUrl: '',
   // @ts-ignore
   breakpoint: false,

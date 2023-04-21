@@ -13,12 +13,15 @@ function TestDetail() {
   const [caseList, setCaseList] = useState([])
 
   useEffect(() => {
-    queryCaseDetail(params).then(res => {
-      setSummaryInfo({...summaryInfo, ...res.data.summary_info})
-      setCaseList([...caseList, ...res.data.case_info])
-    }).catch((error) => {
-      console.log(error)
-    })
+    const init = async () => {
+      await queryCaseDetail(params).then(res => {
+        setSummaryInfo({...summaryInfo, ...res.data.summary_info})
+        setCaseList([...caseList, ...res.data.case_info])
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+    init()
   }, [])
 
   return (

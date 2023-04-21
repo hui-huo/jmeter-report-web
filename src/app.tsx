@@ -2,7 +2,7 @@ import Footer from '@/components/Footer';
 import {LinkOutlined} from '@ant-design/icons';
 import type {RunTimeLayoutConfig} from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
-
+import LOGO from '/public/logo.png'
 
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
@@ -17,11 +17,12 @@ export async function getInitialState() {
 export const layout: RunTimeLayoutConfig = ({initialState, setInitialState}) => {
   return {
     title: ' JMeter Report',
+    logo: LOGO,
     footerRender: () => <Footer/>,
     links:
-      [<a key="github" href="https://github.com/hui-huo" target="_blank">
+      [<a key="github" href="https://github.com/hui-huo/jmeter_report_server" target="_blank">
         <LinkOutlined/>
-        <span>GitHub文档</span>
+        <span>使用文档</span>
       </a>],
     menuHeaderRender: undefined,
 

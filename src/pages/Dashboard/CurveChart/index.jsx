@@ -11,20 +11,23 @@ const CurveChart = ({filter}) => {
 
 
   useEffect(() => {
-    const {currentStamp, agoTimestamp} = timeStampRange(parseInt(range), 'days')
-    queryChartData({...filter, type: 1, startTime: agoTimestamp, endTime: currentStamp})
-      .then(res => {
-        // Chart组件读取id字段为数字时有问题，换个类型
-        const data = res.data
-        const newData = data.map((value) => {
-          value.id = value.id.toString()
-          return value
+    const init = async () => {
+      const {currentStamp, agoTimestamp} = timeStampRange(parseInt(range), 'days')
+      await queryChartData({...filter, type: 1, startTime: agoTimestamp, endTime: currentStamp})
+        .then(res => {
+          // Chart组件读取id字段为数字时有问题，换个类型
+          const data = res.data
+          const newData = data.map((value) => {
+            value.id = value.id.toString()
+            return value
+          })
+          setData(newData)
         })
-        setData(newData)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+    init()
   }, [range, filter]);
 
   const onChange = ({target: {value}}) => {

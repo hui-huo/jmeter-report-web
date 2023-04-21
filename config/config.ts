@@ -107,5 +107,9 @@ export default defineConfig({
   keepalive: [/./],
   tabsLayout: {
     hasDropdown: true,
-  }
+  },
+  publicPath: '/static/',
+  exportStatic: {},
+
+  favicons: ['/static/favicon.ico']
 });

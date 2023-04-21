@@ -89,11 +89,14 @@ const ErrorsTable = ({filter}) => {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    querySummaryList({result: '0', ...filter}).then(res => {
-      setData(res.data)
-    }).catch((error) => {
-      console.log(error)
-    })
+    const init = async () => {
+      await querySummaryList({result: '0', ...filter}).then(res => {
+        setData(res.data)
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+    init()
   }, [filter])
 
   return (

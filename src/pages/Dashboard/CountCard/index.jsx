@@ -14,11 +14,14 @@ function CountCard({filter}) {
   const [data, setData] = useState({})
 
   useEffect(() => {
-    latestBuildInfo(filter).then((res) => {
-      setData({...res.data})
-    }).catch((error) => {
-      console.log(error)
-    })
+    const init = async () => {
+      await latestBuildInfo(filter).then((res) => {
+        setData({...res.data})
+      }).catch((error) => {
+        console.log(error)
+      })
+    }
+    init()
   }, [filter])
 
   return (
