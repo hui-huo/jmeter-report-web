@@ -27,7 +27,7 @@ function DetailModal({caseInfo, visible, setVisible}) {
     <>
       <Modal
         width={800}
-        title="用例 #1001"
+        title={`${caseInfo.case_name}`}
         open={visible}
         footer={null}
         onCancel={handleCancel}
