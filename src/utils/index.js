@@ -38,3 +38,14 @@ export const columnAddValueEnum = (data, baseInfo) => {
   })
   return data
 }
+
+export const convertValueEnum = (data, field) => {
+  let valueEnum = {}
+  data.map(item => {
+    if (item.hasOwnProperty(field)) {
+      valueEnum[item[field]] = {text: item[field]}
+    }
+  })
+  return valueEnum
+
+}
