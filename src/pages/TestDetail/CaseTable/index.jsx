@@ -122,6 +122,9 @@ const CaseTable = ({caseData}) => {
       dataIndex: 'case_name',
       width: 240,
       ...getColumnSearchProps('case_name', '用例名称'),
+      ellipsis: {
+        showTitle: false,
+      },
       render: (_, record) => (
         <Tooltip placement="topLeft" title={record.case_name}>
           {record.case_name}
