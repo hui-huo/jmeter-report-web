@@ -4,7 +4,7 @@
 [![](https://img.shields.io/github/last-commit/hui-huo/jmeter_report_server)](https://github.com/hui-huo/jmeter_report_server)
 
 基于Antd+DRF开发的一款JMeter测试报告服务，用于在JMeter接口测试中使用。
-**[效果体验](http://1.116.137.209:8000/dashboard)**
+**<a href="http://1.116.137.209:8000/dashboard" target="_blank">效果体验</a>**
 
 ## 🌴 背景
 
