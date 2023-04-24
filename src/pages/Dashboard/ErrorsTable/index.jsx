@@ -47,13 +47,13 @@ const columns = [
     title: '成功',
     dataIndex: 'success',
     align: 'center',
-    render: (_, record) => (<Tag color="success">{record.total}</Tag>)
+    render: (_, record) => (<Tag color="success">{record.success}</Tag>)
   },
   {
     title: '失败',
     dataIndex: 'fail',
     align: 'center',
-    render: (_, record) => (<Tag color="error">{record.total}</Tag>)
+    render: (_, record) => (<Tag color="error">{record.fail}</Tag>)
   },
   {
     title: '通过率',
