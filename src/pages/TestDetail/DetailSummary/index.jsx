@@ -3,6 +3,7 @@ import YongLie from "/public/yonglie.svg";
 import Fail from "/public/fail.svg";
 import Success from "/public/success.svg";
 import Rate from "/public/rate.svg";
+import ScenarioDetail from "/public/scenario_detail.svg";
 import {Card, Col, Descriptions, Row, Statistic} from "antd";
 import RightChart from "@/pages/TestDetail/RightChart";
 import './index.css'
@@ -15,37 +16,47 @@ function DetailSummary({summaryInfo}) {
         <Col span={16}>
           <ProCard title={false} bordered={false}>
             <Row gutter={16}>
-              <Col span={5}>
+              <Col span={4}>
                 <Card bordered={false} hoverable size='small'>
                   <Statistic
-                    title="用例总数"
+                    title="场景数"
+                    value={summaryInfo.scenario}
+                    valueStyle={{fontSize: 21}}
+                    prefix={<img src={ScenarioDetail} style={{height: '1em', width: '1em'}}/>}
+                  />
+                </Card>
+              </Col>
+              <Col span={4}>
+                <Card bordered={false} hoverable size='small'>
+                  <Statistic
+                    title="用例数"
                     value={summaryInfo.total}
                     valueStyle={{fontSize: 21}}
                     prefix={<img src={YongLie} style={{height: '1em', width: '1em'}}/>}
                   />
                 </Card>
               </Col>
-              <Col span={5}>
+              <Col span={4}>
                 <Card bordered={false} hoverable size='small'>
                   <Statistic
-                    title="成功数"
+                    title="成功"
                     value={summaryInfo.success}
                     valueStyle={{fontSize: 21}}
                     prefix={<img src={Success} style={{height: '1em', width: '1em'}}/>}
                   />
                 </Card>
               </Col>
-              <Col span={5}>
+              <Col span={4}>
                 <Card bordered={false} hoverable size='small'>
                   <Statistic
-                    title="失败数"
+                    title="失败"
                     value={summaryInfo.fail}
                     valueStyle={{fontSize: 21}}
                     prefix={<img src={Fail} style={{height: '1em', width: '1em'}}/>}
                   />
                 </Card>
               </Col>
-              <Col span={5}>
+              <Col span={4}>
                 <Card bordered={false} hoverable size='small'>
                   <Statistic
                     title="通过率"

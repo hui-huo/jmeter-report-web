@@ -5,6 +5,7 @@ import DetailModal from "@/pages/TestDetail/DetailModal";
 import {SearchOutlined} from "@ant-design/icons";
 import Highlighter from 'react-highlight-words';
 import {convertValueEnum} from "@/utils";
+import {Link} from "@@/exports";
 
 
 const CaseTable = ({caseData}) => {
@@ -107,20 +108,52 @@ const CaseTable = ({caseData}) => {
     {
       title: '用例ID',
       dataIndex: 'id',
-      width: 60,
+      width: 80,
+      render: (_, record,) => {
+        return <a
+          onClick={() => {
+            setCurrentRecord(record)
+            setVisible(true)
+          }}
+        >#{record.id}</a>
+      }
     },
     {
       title: '所属模块',
       dataIndex: 'module_name',
       filters: true,
       onFilter: true,
-      width: 120,
-      valueEnum: convertValueEnum(caseData, 'module_name')
+      width: 100,
+      valueEnum: convertValueEnum(caseData, 'module_name'),
+      ellipsis: {
+        showTitle: false,
+      },
+      render: (_, record) => (
+        <Tooltip placement="topLeft" title={record.module_name}>
+          {record.module_name}
+        </Tooltip>
+      ),
+    },
+    {
+      title: '测试场景',
+      dataIndex: 'scenario_name',
+      filters: true,
+      onFilter: true,
+      width: 180,
+      valueEnum: convertValueEnum(caseData, 'scenario_name'),
+      ellipsis: {
+        showTitle: false,
+      },
+      render: (_, record) => (
+        <Tooltip placement="topLeft" title={record.scenario_name}>
+          {record.scenario_name}
+        </Tooltip>
+      ),
     },
     {
       title: '用例名称',
       dataIndex: 'case_name',
-      width: 240,
+      // width: 240,
       ...getColumnSearchProps('case_name', '用例名称'),
       ellipsis: {
         showTitle: false,
@@ -132,16 +165,9 @@ const CaseTable = ({caseData}) => {
       ),
     },
     {
-      title: '请求方式',
-      dataIndex: 'type',
-      render: (_, record) => {
-        return record.request_method
-      }
-    },
-    {
       title: '请求路径',
       dataIndex: 'request_url',
-      width: 280,
+      // width: 280,
       ellipsis: {
         showTitle: false,
       },
@@ -152,8 +178,17 @@ const CaseTable = ({caseData}) => {
       ),
     },
     {
+      title: '请求方式',
+      width: 120,
+      dataIndex: 'type',
+      render: (_, record) => {
+        return record.request_method
+      }
+    },
+    {
       title: '测试结果',
-      dataIndex: 'test_result',
+      width: 120,
+      dataIndex: 'success',
       align: 'center',
       filters: true,
       onFilter: true,
@@ -163,7 +198,7 @@ const CaseTable = ({caseData}) => {
       },
       render: (_, record) => {
         // boolean
-        if (record.test_result) {
+        if (record.success) {
           return <Tag color="success">成功</Tag>
         } else {
           return <Tag color="error">失败</Tag>
@@ -178,6 +213,7 @@ const CaseTable = ({caseData}) => {
     },
     {
       title: '操作',
+      width: 80,
       align: 'center',
       key: 'option',
       search: false,
@@ -190,8 +226,6 @@ const CaseTable = ({caseData}) => {
       }
     }
   ];
-
-
   return (
     <>
       <ProTable

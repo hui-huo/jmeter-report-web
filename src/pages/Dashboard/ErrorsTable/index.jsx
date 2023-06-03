@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ProTable} from '@ant-design/pro-components';
-import {Tag} from 'antd';
-import {querySummaryList} from "@/services/jmeter-report/api";
+import {Button, Popconfirm, Tag} from 'antd';
+import {deleteSummary, querySummaryList} from "@/services/jmeter-report/api";
 import {formatTime} from "@/utils";
 import {Link} from "@@/exports";
 
@@ -11,7 +11,7 @@ const columns = [
     dataIndex: 'id',
     title: '构建ID',
     align: 'center',
-    width: 80,
+    width: 66,
     search: false,
     render: (_, record) => {
       const url = `/detail/${record.id}`
@@ -21,11 +21,11 @@ const columns = [
     }
   },
   {
-    title: '项目',
+    title: '所属项目',
     dataIndex: 'project',
   },
   {
-    title: '环境',
+    title: '执行环境',
     dataIndex: 'env',
     align: 'center',
   },
@@ -38,7 +38,7 @@ const columns = [
     }
   },
   {
-    title: '总数',
+    title: '用例数',
     dataIndex: 'total',
     align: 'center',
     render: (_, record) => (<Tag color="default">{record.total}</Tag>)
@@ -80,8 +80,20 @@ const columns = [
     title: '开始时间',
     dataIndex: 'start_time',
     align: 'center',
-    width: 210
+    width: 200
   },
+  {
+    title: '操作',
+    align: 'center',
+    key: 'option',
+    search: false,
+    render: (text, record, _, action) => {
+      const url = `/detail/${record.id}`
+      return (
+        <Link to={url}>查看</Link>
+      )
+    }
+  }
 ];
 
 const ErrorsTable = ({filter}) => {

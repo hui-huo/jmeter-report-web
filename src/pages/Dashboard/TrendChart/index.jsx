@@ -58,6 +58,13 @@ function TrendChart({filter}) {
       type: {
         values: ['fail', 'success'],
         alias: ['失败', '成功'],
+        formatter: (value) => {
+          if (value === 'success') {
+            return '成功'
+          } else {
+            return '失败'
+          }
+        }
       },
     },
     color: ({type}) => {

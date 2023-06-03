@@ -15,11 +15,17 @@ function DetailModal({caseInfo, visible, setVisible}) {
   }
 
   const isJSONStr = (value) => {
-    try {
-      JSON.parse(value);
-      return true;
-    } catch (e) {
-      return false;
+    if (typeof value == 'string') {
+      try {
+        let obj = JSON.parse(value);
+        if (typeof obj == 'object' && obj) {
+          return true;
+        } else {
+          return false;
+        }
+      } catch (e) {
+        // console.log('error：' + value + '!!!' + e);    return false;
+      }
     }
   }
 
@@ -27,7 +33,7 @@ function DetailModal({caseInfo, visible, setVisible}) {
     <>
       <Modal
         width={800}
-        title={`${caseInfo.case_name}`}
+        title={`用例名称：${caseInfo.case_name}`}
         open={visible}
         footer={null}
         onCancel={handleCancel}
@@ -39,34 +45,34 @@ function DetailModal({caseInfo, visible, setVisible}) {
               activeKey: tab,
               items: [
                 {
-                  label: `用例基本信息`,
+                  label: `基本信息`,
                   key: 'tab1',
                   children: <BaseInfoDesc data={caseInfo}/>,
                 },
                 {
-                  label: `Request Body`,
-                  key: 'tab2',
+                  label: `请求体`,
+                  key: 'tab3',
                   children: (
                     isJSONStr(caseInfo.request_body) ? <JSONView data={caseInfo.request_body}/> :
                       <SimpleView data={caseInfo.request_body}/>
                   )
                 },
                 {
-                  label: `Response Body`,
-                  key: 'tab3',
+                  label: `响应体`,
+                  key: 'tab4',
                   children: (
                     isJSONStr(caseInfo.response_body) ? <JSONView data={caseInfo.response_body}/> :
                       <SimpleView data={caseInfo.response_body}/>
                   )
                 },
                 {
-                  label: `Request Header`,
-                  key: 'tab4',
+                  label: `请求头`,
+                  key: 'tab5',
                   children: <SimpleView data={caseInfo.request_header}/>,
                 },
                 {
-                  label: `Response Header`,
-                  key: 'tab5',
+                  label: `响应头`,
+                  key: 'tab6',
                   children: <SimpleView data={caseInfo.response_header}/>,
                 },
               ],

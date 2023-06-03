@@ -45,7 +45,7 @@ const CurveChart = ({filter}) => {
     tooltip: {
       formatter: (datum) => {
         // console.log(datum)
-        return {name: 'pass_rate', value: datum.pass_rate * 100 + '%'};
+        return {name: '通过率', value: datum.pass_rate * 100 + '%'};
       },
     },
     yAxis: {

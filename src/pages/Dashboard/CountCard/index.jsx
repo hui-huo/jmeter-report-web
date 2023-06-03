@@ -4,6 +4,7 @@ import {useState} from 'react';
 import {RingProgress} from '@ant-design/plots';
 import LaunchSVG from '/public/launch.svg'
 import CaseSVG from '/public/case.svg'
+import Scenario from '/public/scenario.svg'
 import {latestBuildInfo} from "@/services/jmeter-report/api";
 import {Link} from "@@/exports";
 import {notification} from 'antd';
@@ -43,6 +44,20 @@ function CountCard({filter}) {
         chartPlacement="left"
       />
       <Divider type='vertical'/>
+      <StatisticCard
+        statistic={{
+          title: '场景数',
+          value: data.scenario,
+        }}
+        chart={
+          <img
+            src={Scenario}
+            alt="百分比"
+            width="100%"
+          />
+        }
+        chartPlacement="left"
+      />
       <StatisticCard
         statistic={{
           title: '用例数',
