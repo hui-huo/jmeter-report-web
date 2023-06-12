@@ -41,7 +41,7 @@ const errorHandler = (error: any) => {
 
 //对 extend 实例进行简单的封装
 const request = extend({
-  // prefix: 'http://localhost:8000',  // 统一的请求前缀
+  prefix: 'http://localhost:8000',  // 统一的请求前缀
   timeout: 3000,                    // 超时时间
   // headers: {                        // headers中搭载token等请求头信息
   //   'Content-Type': 'application/x-www-form-urlencoded',
