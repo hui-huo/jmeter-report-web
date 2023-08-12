@@ -49,3 +49,15 @@ export const convertValueEnum = (data, field) => {
   return valueEnum
 
 }
+
+export const formatNumber = (number) => {
+  const roundedNumber = Math.round(number * 100) / 100; // 四舍五入到两位小数
+  const formattedNumber = roundedNumber.toFixed(2); // 保留两位小数
+
+  // 使用 padStart() 方法在不足两位小数时使用零进行补充
+  const parts = formattedNumber.split('.');
+  const integerPart = parts[0];
+  const decimalPart = parts[1].padStart(2, '0');
+
+  return `${integerPart}.${decimalPart}`;
+}

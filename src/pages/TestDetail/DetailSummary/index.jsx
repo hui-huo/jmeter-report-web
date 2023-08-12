@@ -7,6 +7,8 @@ import ScenarioDetail from "/public/scenario_detail.svg";
 import {Card, Col, Descriptions, Row, Statistic} from "antd";
 import RightChart from "@/pages/TestDetail/RightChart";
 import './index.css'
+import {formatNumber} from "@/utils";
+import {useEffect, useState} from "react";
 
 function DetailSummary({summaryInfo}) {
   const title = `测试报告 #${summaryInfo.id}`
@@ -56,11 +58,11 @@ function DetailSummary({summaryInfo}) {
                   />
                 </Card>
               </Col>
-              <Col span={4}>
+              <Col span={4.5}>
                 <Card bordered={false} hoverable size='small'>
                   <Statistic
                     title="通过率"
-                    value={summaryInfo.pass_rate * 100}
+                    value={formatNumber(summaryInfo.pass_rate * 100)}
                     valueStyle={{fontSize: 21}}
                     prefix={<img src={Rate} style={{height: '1em', width: '1em'}}/>}
                     suffix="%"

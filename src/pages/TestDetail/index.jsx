@@ -15,8 +15,11 @@ function TestDetail() {
   useEffect(() => {
     const init = async () => {
       await queryCaseDetail(params).then(res => {
+        let cases = res.data.case_info.map((_case, index) => {
+          return { ..._case, index: index + 1 };
+        })
         setSummaryInfo({...summaryInfo, ...res.data.summary_info})
-        setCaseList([...caseList, ...res.data.case_info])
+        setCaseList([...caseList, ...cases])
       }).catch((error) => {
         console.log(error)
       })
@@ -27,8 +30,14 @@ function TestDetail() {
   return (
     <>
       <PageContainer title={false}>
-        <DetailSummary summaryInfo={summaryInfo}/>
-        <CaseTable caseData={caseList}/>
+        {
+          Object.keys(summaryInfo).length !== 0 ? <DetailSummary summaryInfo={summaryInfo}/> : ""
+        }
+        {
+          caseList.length !== 0 ? <CaseTable caseData={caseList}/> : ""
+        }
+        {/*<DetailSummary summaryInfo={summaryInfo}/>*/}
+        {/*<CaseTable caseData={caseList}/>*/}
       </PageContainer>
     </>
   );

@@ -115,7 +115,7 @@ const CaseTable = ({caseData}) => {
             setCurrentRecord(record)
             setVisible(true)
           }}
-        >#{record.id}</a>
+        >#{record.index}</a>
       }
     },
     {

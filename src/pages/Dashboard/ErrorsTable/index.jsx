@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {ProTable} from '@ant-design/pro-components';
 import {Button, Popconfirm, Tag} from 'antd';
 import {deleteSummary, querySummaryList} from "@/services/jmeter-report/api";
-import {formatTime} from "@/utils";
+import {formatNumber, formatTime} from "@/utils";
 import {Link} from "@@/exports";
 
 
@@ -61,9 +61,9 @@ const columns = [
     align: 'center',
     render: (_, record) => {
       if (record.pass_rate < 1) {
-        return <Tag color="error">{record.pass_rate * 100}%</Tag>
+        return <Tag color="error">{formatNumber(record.pass_rate * 100)}%</Tag>
       } else {
-        return <Tag color="success">{record.pass_rate * 100}%</Tag>
+        return <Tag color="success">{formatNumber(record.pass_rate * 100)}%</Tag>
       }
     }
   },

@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import {ProTable} from '@ant-design/pro-components';
 import {Button, Popconfirm, Tag} from 'antd';
 import {deleteSummary, querySummaryList} from "@/services/jmeter-report/api";
-import {columnAddValueEnum, formatTime} from "@/utils";
+import {columnAddValueEnum, formatNumber, formatTime} from "@/utils";
 import {useModel} from "@umijs/max";
 import {Link, useSearchParams} from "@@/exports";
 
@@ -87,9 +87,9 @@ const SummaryTable = () => {
       // width: 120,
       render: (_, record) => {
         if (record.pass_rate < 1) {
-          return <Tag color="error">{record.pass_rate * 100}%</Tag>
+          return <Tag color="error">{formatNumber(record.pass_rate * 100)}%</Tag>
         } else {
-          return <Tag color="success">{record.pass_rate * 100}%</Tag>
+          return <Tag color="success">{formatNumber(record.pass_rate * 100)}%</Tag>
         }
       }
     },

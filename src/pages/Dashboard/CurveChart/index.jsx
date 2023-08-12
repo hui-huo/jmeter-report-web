@@ -3,7 +3,7 @@ import {Line} from '@ant-design/plots';
 import {Card, notification} from "antd";
 import {queryChartData} from "@/services/jmeter-report/api";
 import FilterCard from "@/pages/Dashboard/FilterCard";
-import {timeStampRange} from "@/utils";
+import {formatNumber, timeStampRange} from "@/utils";
 
 const CurveChart = ({filter}) => {
   const [data, setData] = useState([]);
@@ -45,7 +45,7 @@ const CurveChart = ({filter}) => {
     tooltip: {
       formatter: (datum) => {
         // console.log(datum)
-        return {name: '通过率', value: datum.pass_rate * 100 + '%'};
+        return {name: '通过率', value: formatNumber(datum.pass_rate * 100) + '%'};
       },
     },
     yAxis: {
